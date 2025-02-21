@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.0.0...v1.0.1) (2025-02-21)
+
+
+### Bug Fixes
+
+* Establecer un valor predeterminado para la versión en caso de que no existan tags ([ed7b621](https://github.com/Negri234279/bot-rust-battlemetrics/commit/ed7b621568a0d4dab0b535247210fd466576cd0b))
+
 # 1.0.0 (2025-02-21)
 
 
