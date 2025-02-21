@@ -54,7 +54,11 @@ jobs:
       - name: Get version from semantic-release
         id: get-version
         run: |
-          VERSION=$(git describe --tags --abbrev=0)
+          if git describe --tags --abbrev=0 > /dev/null 2>&1; then
+            VERSION=$(git describe --tags --abbrev=0)
+          else
+            VERSION="v1.0.0"  # Valor predeterminado si no hay tags
+          fi
           echo "version=${VERSION}" >> $GITHUB_OUTPUT
 
       - name: Build and push Docker image
