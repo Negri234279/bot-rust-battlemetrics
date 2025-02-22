@@ -6,3 +6,6 @@ package-lock.json
 .editorconfig
 tsconfig.*
 .vscode/*
+*.md
+*.yml
+*.yaml
