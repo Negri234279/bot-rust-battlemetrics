@@ -1,3 +1,11 @@
+# [1.1.0](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.0.2...v1.1.0) (2025-02-22)
+
+
+### Features
+
+* Añadir configuración de Dependabot para actualizaciones automáticas de dependencias ([e230eec](https://github.com/Negri234279/bot-rust-battlemetrics/commit/e230eec1c047d4c75bc9c31e6b38d62a1983fc51))
+* Añadir flujo de trabajo para la auto-fusión de PRs de Dependabot ([3c10838](https://github.com/Negri234279/bot-rust-battlemetrics/commit/3c108389b5ae7cbaefeb20b140a58723111bc71b))
+
 ## [1.0.2](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.0.1...v1.0.2) (2025-02-21)
 
 
