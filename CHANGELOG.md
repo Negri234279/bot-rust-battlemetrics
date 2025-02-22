@@ -1,3 +1,12 @@
+# [1.2.0](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.1.1...v1.2.0) (2025-02-22)
+
+
+### Features
+
+* Configurar Docker para entornos de desarrollo y producción, y añadir scripts de inicio en package.json ([d40470f](https://github.com/Negri234279/bot-rust-battlemetrics/commit/d40470fd0dbb7238801ab56487f2cbdf8b1a434d))
+* Implementar sistema de logging con Winston y mejorar manejo de errores en el bot ([ae8babf](https://github.com/Negri234279/bot-rust-battlemetrics/commit/ae8babf496463941211a8ddbc47f6006b2ffbff1))
+* Inicializar la instancia de BattlemetricsRepositoryImpl ([188798d](https://github.com/Negri234279/bot-rust-battlemetrics/commit/188798d19d132d86584a7bc638240deb9bc0ac23))
+
 ## [1.1.1](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.1.0...v1.1.1) (2025-02-22)
 
 
