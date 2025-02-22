@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  rust-battlemetrics-bot:
+    container_name: rust-battlemetrics-bot
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        NODE_ENV: development
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - DISCORD_TOKEN=${DISCORD_TOKEN}
+    volumes:
+      - ./logs:/app/logs

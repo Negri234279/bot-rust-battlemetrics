@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  rust-battlemetrics-bot:
+    container_name: rust-battlemetrics-bot
+    image: negrii/rust-battlemetrics-bot:latest
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - DISCORD_TOKEN=${DISCORD_TOKEN}
+    volumes:
+      - ./logs:/app/logs
+
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
+    command: --interval 300

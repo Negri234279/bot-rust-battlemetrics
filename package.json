@@ -4,7 +4,9 @@
   "main": "src/main.js",
   "scripts": {
     "start": "node src/main.js",
-    "dev": "nodemon src/main.js"
+    "dev": "nodemon src/main.js",
+    "docker:dev": "docker-compose -f docker-compose.dev.yml up --build",
+    "docker:prod": "docker-compose -f docker-compose.prod.yml up -d"
   },
   "keywords": [],
   "author": "",
