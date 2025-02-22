@@ -1,3 +1,11 @@
+# [1.3.0](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.2.0...v1.3.0) (2025-02-22)
+
+
+### Features
+
+* Añadir tipos para comandos y carga de comandos en el bot ([7bfa98c](https://github.com/Negri234279/bot-rust-battlemetrics/commit/7bfa98c80998ba2e33866868e4f18ae62613e808))
+* Refactor configuración del bot y carga de comandos en un nuevo archivo ([aa554ca](https://github.com/Negri234279/bot-rust-battlemetrics/commit/aa554ca797da660a33a22817f558883b1889b259))
+
 # [1.2.0](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.1.1...v1.2.0) (2025-02-22)
 
 
