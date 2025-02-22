@@ -1,20 +1,21 @@
-require('dotenv').config()
-
 const { Client, GatewayIntentBits } = require('discord.js')
-const playerCommand = require('./commands/player.command')
 const addPlayerCommand = require('./commands/add-player.command')
-const removePlayerCommand = require('./commands/remove-player.command')
 const listPlayerCommand = require('./commands/list-player.command')
+const playerCommand = require('./commands/player.command')
 const playersCommand = require('./commands/players.command')
+const removePlayerCommand = require('./commands/remove-player.command')
+const { DISCORD_TOKEN } = require('./configs/env')
 const ControlledError = require('./errors/controlled.error')
-
-const DISCORD_TOKEN = process.env.DISCORD_TOKEN
+const logger = require('./providers/logger')
 
 const run = async () => {
     try {
         if (!DISCORD_TOKEN) {
-            throw new Error('No se encontró el token de Discord.')
+            logger.error('No se ha encontrado el token de Discord')
+            process.exit(1)
         }
+
+        logger.info('Iniciando bot...')
 
         const client = new Client({ intents: [GatewayIntentBits.Guilds] })
 
@@ -25,7 +26,7 @@ const run = async () => {
             await client.application.commands.create(listPlayerCommand.data)
             await client.application.commands.create(playersCommand.data)
 
-            console.log(`Bot listo como ${client.user.tag}`)
+            logger.info(`Bot listo como ${client.user.tag}`)
         })
 
         client.on('interactionCreate', async (interaction) => {
@@ -50,11 +51,11 @@ const run = async () => {
                 const timeResponse = new Date() - time
                 const { username } = interaction.user
 
-                console.log(
-                    `${interaction.commandName} - ${username} - Tiempo de respuesta: ${timeResponse}ms`
-                )
+                const msgCmd = `${interaction.commandName} - ${username} - Tiempo de respuesta: ${timeResponse}ms`
+                logger.info(msgCmd)
             } catch (error) {
-                console.error(error)
+                const msgLog = `Error al ejecutar el comando ${interaction.commandName} - ${interaction.user.username}:`
+                logger.error(msgLog, error)
 
                 const msg =
                     error instanceof ControlledError
@@ -65,9 +66,37 @@ const run = async () => {
             }
         })
 
-        client.login(DISCORD_TOKEN)
+        client
+            .login(DISCORD_TOKEN)
+            .then(() => logger.info('Bot iniciado correctamente'))
+            .catch((error) => {
+                logger.error('Error al iniciar sesión:', error)
+                process.exit(1)
+            })
+
+        process.on('uncaughtException', (error) => {
+            logger.error('Error no controlado (unhandledRejection):', error)
+        })
+
+        process.on('unhandledRejection', (error) => {
+            logger.error('Error no controlado (unhandledRejection):', error)
+        })
+
+        process.on('SIGINT', () => {
+            logger.info('Recibida señal SIGINT. Saliendo del proceso...')
+            process.exit(0)
+        })
+
+        process.on('SIGTERM', () => {
+            logger.info('Recibida señal SIGTERM. Saliendo del proceso...')
+            process.exit(0)
+        })
+
+        process.on('exit', () => {
+            logger.info('Saliendo del proceso...')
+        })
     } catch (error) {
-        console.error(error)
+        logger.error('Error en la ejecución del bot:', error)
         process.exit(1)
     }
 }
