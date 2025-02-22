@@ -14,6 +14,8 @@ class BattlemetricsRepositoryImpl {
         if (BattlemetricsRepositoryImpl.instance) {
             return BattlemetricsRepositoryImpl.instance
         }
+
+        BattlemetricsRepositoryImpl.instance = this
     }
 
     /**
