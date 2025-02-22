@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.1.0...v1.1.1) (2025-02-22)
+
+
+### Bug Fixes
+
+* Importar ControlledError en el comando list-player ([581509f](https://github.com/Negri234279/bot-rust-battlemetrics/commit/581509f72944c1473a6a86142448ac61cf8c7f52))
+
 # [1.1.0](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.0.2...v1.1.0) (2025-02-22)
 
 
