@@ -1,5 +1,6 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js')
 const BattlemetricsRepositoryImpl = require('../repositories/battlemetrics.repository')
+const ControlledError = require('../errors/controlled.error')
 
 const battlemetricsRepositoryImpl = new BattlemetricsRepositoryImpl()
 
