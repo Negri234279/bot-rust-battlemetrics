@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.0.1...v1.0.2) (2025-02-21)
+
+
+### Bug Fixes
+
+* Eliminar el plugin @semantic-release/github de la configuración de semantic-release ([2f481e9](https://github.com/Negri234279/bot-rust-battlemetrics/commit/2f481e9b86d8ef7d7f9a6efef01d679a0efa1e46))
+
 ## [1.0.1](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.0.0...v1.0.1) (2025-02-21)
 
 
