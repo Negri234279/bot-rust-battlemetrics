@@ -1,3 +1,10 @@
+## [1.7.6](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.7.5...v1.7.6) (2025-02-23)
+
+
+### Bug Fixes
+
+* Actualizar la versión de etiqueta predeterminada a v0.0.0 en el flujo de trabajo de Docker ([e46a81c](https://github.com/Negri234279/bot-rust-battlemetrics/commit/e46a81c3f9208c6ed8b8694e1502ba53f37757d8))
+
 ## [1.7.5](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.7.4...v1.7.5) (2025-02-23)
 
 
