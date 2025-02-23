@@ -1,3 +1,10 @@
+## [1.7.8](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.7.7...v1.7.8) (2025-02-23)
+
+
+### Bug Fixes
+
+* Actualizar la acción de configuración de Node.js a la versión 4 y mejorar la obtención de etiquetas en el flujo de trabajo de Docker ([f204df2](https://github.com/Negri234279/bot-rust-battlemetrics/commit/f204df2483071531fc1318ae6b3f2e918d461041))
+
 ## [1.7.7](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.7.6...v1.7.7) (2025-02-23)
 
 
