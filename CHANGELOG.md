@@ -1,3 +1,14 @@
+# [1.3.0](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.2.0...v1.3.0) (2025-02-23)
+
+
+### Features
+
+* Actualizar la configuración de Docker y la versión del paquete a 1.3.0 ([0738b8f](https://github.com/Negri234279/bot-rust-battlemetrics/commit/0738b8f95e2bbc3ebdb7429cd6d5f1c2e72cd9e2))
+* Actualizar la versión de destino de TypeScript a ES2023 en tsconfig.json ([30987f1](https://github.com/Negri234279/bot-rust-battlemetrics/commit/30987f15191a63f5699d834c06c9a1f98ce82114))
+* Añadir tipos para comandos y carga de comandos en el bot ([7bfa98c](https://github.com/Negri234279/bot-rust-battlemetrics/commit/7bfa98c80998ba2e33866868e4f18ae62613e808))
+* Migrar código de JavaScript a TypeScript, eliminar archivos obsoletos y mejorar la configuración de Docker ([8b85fd1](https://github.com/Negri234279/bot-rust-battlemetrics/commit/8b85fd1cb509fc08f1bd0a81eb55cf7afb978bf9))
+* Refactor configuración del bot y carga de comandos en un nuevo archivo ([aa554ca](https://github.com/Negri234279/bot-rust-battlemetrics/commit/aa554ca797da660a33a22817f558883b1889b259))
+
 # [1.2.0](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.1.1...v1.2.0) (2025-02-22)
 
 
