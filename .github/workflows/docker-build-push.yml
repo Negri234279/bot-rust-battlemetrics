@@ -51,8 +51,7 @@ jobs:
       - name: Get latest tag
         id: get-latest-tag
         run: |
-          git tag --list
-          LATEST_TAG=$(git describe --tags --abbrev=0)
+          LATEST_TAG=$(git tag --sort=-v:refname | head -n 1)
           echo "latest_tag=${LATEST_TAG}" >> $GITHUB_OUTPUT
 
       - name: Set up QEMU
