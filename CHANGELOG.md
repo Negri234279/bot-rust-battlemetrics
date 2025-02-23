@@ -1,3 +1,10 @@
+## [1.7.2](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.7.1...v1.7.2) (2025-02-23)
+
+
+### Bug Fixes
+
+* Actualizar acción de checkout a v4 y habilitar la obtención de etiquetas ([d99a9e6](https://github.com/Negri234279/bot-rust-battlemetrics/commit/d99a9e62d7c2823b510546a66898f5fbc2ea64c6))
+
 ## [1.7.1](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.7.0...v1.7.1) (2025-02-23)
 
 
