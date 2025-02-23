@@ -1,3 +1,10 @@
+## [1.7.5](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.7.4...v1.7.5) (2025-02-23)
+
+
+### Bug Fixes
+
+* Actualizar acciones de checkout a la versión 4 y ajustar la profundidad de fetch en el flujo de trabajo de Docker ([96109b7](https://github.com/Negri234279/bot-rust-battlemetrics/commit/96109b7ac8e9e3206e26d2f86a62fa6884d4124f))
+
 ## [1.7.4](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.7.3...v1.7.4) (2025-02-23)
 
 
