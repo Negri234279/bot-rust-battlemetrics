@@ -3,7 +3,7 @@ name: Release and Docker Build
 on:
   push:
     branches:
-      - dev
+      - main
 
 jobs:
   release:
@@ -69,5 +69,5 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            negrii/rust-battlemetrics-bot-2:latest
-            negrii/rust-battlemetrics-bot-2:${{ steps.get-latest-tag.outputs.latest_tag }}
+            negrii/rust-battlemetrics-bot:latest
+            negrii/rust-battlemetrics-bot:${{ steps.get-latest-tag.outputs.latest_tag }}
