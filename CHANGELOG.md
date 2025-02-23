@@ -1,3 +1,10 @@
+## [1.7.7](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.7.6...v1.7.7) (2025-02-23)
+
+
+### Bug Fixes
+
+* Añadir nueva línea al final del archivo de flujo de trabajo de Docker ([2fd5773](https://github.com/Negri234279/bot-rust-battlemetrics/commit/2fd5773778029500b0b89940c4c1a739261f84a0))
+
 ## [1.7.6](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.7.5...v1.7.6) (2025-02-23)
 
 
