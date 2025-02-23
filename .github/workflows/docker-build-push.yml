@@ -3,7 +3,7 @@ name: Release and Docker Build
 on:
   push:
     branches:
-      - main
+      - dev
 
 jobs:
   release:
@@ -21,7 +21,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: 22
 
       - name: Install dependencies
         run: npm install
@@ -68,5 +68,5 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            negrii/rust-battlemetrics-bot:latest
-            negrii/rust-battlemetrics-bot:${{ steps.get-version.outputs.version }}
+            negrii/rust-battlemetrics-bot-2:latest
+            negrii/rust-battlemetrics-bot-2:${{ steps.get-version.outputs.version }}

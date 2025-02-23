@@ -1,4 +1,4 @@
-const formatSeconds = (time) => {
+const formatSeconds = (time: number): string => {
     const hours = Math.floor(time / 3600)
     const remainingSeconds = time % 3600
     const minutes = Math.floor(remainingSeconds / 60)
@@ -8,4 +8,4 @@ const formatSeconds = (time) => {
     return `Tiempo jugado: ${msg} recientes`
 }
 
-module.exports = formatSeconds
+export default formatSeconds

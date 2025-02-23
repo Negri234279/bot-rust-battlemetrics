@@ -1,12 +1,12 @@
-const { SlashCommandBuilder } = require('discord.js')
-const BattlemetricsRepositoryImpl = require('../repositories/battlemetrics.repository')
-const getPlayer = require('../api/player')
+import { ChatInputCommandInteraction, SlashCommandBuilder } from 'discord.js'
+import { getPlayer } from '../api/player'
+import { BattlemetricsRepositoryImpl } from '../repositories/battlemetrics.repository'
 
 const battlemetricsRepositoryImpl = new BattlemetricsRepositoryImpl()
 
 const commandName = 'add-player'
 
-module.exports = {
+const commmand = {
     commandName,
     data: new SlashCommandBuilder()
         .setName(commandName)
@@ -24,8 +24,7 @@ module.exports = {
                 .setDescription('Alias o nombre personalizado para el jugador')
                 .setRequired(false)
         ),
-    /** * @param {import("discord.js").ChatInputCommandInteraction} interaction */
-    execute: async (interaction) => {
+    execute: async (interaction: ChatInputCommandInteraction) => {
         const playerId = interaction.options.getString('id')
         const playerAlias = interaction.options.getString('alias')
         const discordGroupId = interaction.guild.id
@@ -45,3 +44,5 @@ module.exports = {
         await interaction.reply(msg)
     },
 }
+
+export default commmand

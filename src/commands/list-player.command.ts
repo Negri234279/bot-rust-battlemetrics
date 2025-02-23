@@ -1,18 +1,17 @@
-const { SlashCommandBuilder, EmbedBuilder } = require('discord.js')
-const BattlemetricsRepositoryImpl = require('../repositories/battlemetrics.repository')
-const ControlledError = require('../errors/controlled.error')
+import { ChatInputCommandInteraction, EmbedBuilder, SlashCommandBuilder } from 'discord.js'
+import ControlledError from '../errors/controlled.error'
+import { BattlemetricsRepositoryImpl } from '../repositories/battlemetrics.repository'
 
 const battlemetricsRepositoryImpl = new BattlemetricsRepositoryImpl()
 
 const commandName = 'list-player'
 
-module.exports = {
+const commmand = {
     commandName,
     data: new SlashCommandBuilder()
         .setName(commandName)
         .setDescription('Mostrar lista de seguimiento'),
-    /** * @param {import("discord.js").ChatInputCommandInteraction} interaction */
-    execute: async (interaction) => {
+    execute: async (interaction: ChatInputCommandInteraction) => {
         const discordGroupId = interaction.guild.id
 
         const players = await battlemetricsRepositoryImpl.getUsers(discordGroupId)
@@ -33,3 +32,5 @@ module.exports = {
         await interaction.reply({ embeds: [embed] })
     },
 }
+
+export default commmand

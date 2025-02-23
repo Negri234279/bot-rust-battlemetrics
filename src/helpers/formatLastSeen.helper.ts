@@ -1,4 +1,4 @@
-const formatLastSeen = (lastSeen) => {
+const formatLastSeen = (lastSeen: Date): string => {
     const date = new Date(lastSeen)
     const formattedDate = date.toLocaleString('es-ES', {
         day: '2-digit',
@@ -9,7 +9,7 @@ const formatLastSeen = (lastSeen) => {
     })
 
     const now = new Date()
-    const diffInSeconds = Math.floor((now - date) / 1000)
+    const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000)
 
     const months = Math.floor(diffInSeconds / (3600 * 24 * 30))
     const days = Math.floor(diffInSeconds / (3600 * 24))
@@ -43,4 +43,4 @@ const formatLastSeen = (lastSeen) => {
     return `Última vez visto: ${formattedDate}, ${timeAgo}`
 }
 
-module.exports = formatLastSeen
+export default formatLastSeen

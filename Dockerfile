@@ -1,16 +1,23 @@
-FROM node:20
+FROM node:22 AS builder
 
 WORKDIR /app
 
-ARG NODE_ENV=production
-
 COPY package*.json ./
 
-RUN if [ "$NODE_ENV" = "development" ]; \
-    then npm install; \
-    else npm install --omit=dev; \
-    fi
+RUN npm install
 
 COPY . .
 
-CMD ["node", "src/main.js"]
+RUN npm run tsc
+
+FROM node:22
+
+WORKDIR /app
+
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/package*.json ./
+COPY --from=builder /app/src/repositories/database.json ./src/repositories/
+
+RUN npm install --omit=dev
+
+CMD ["node", "dist/main.js"]
