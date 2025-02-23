@@ -1,3 +1,10 @@
+## [1.7.3](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.7.2...v1.7.3) (2025-02-23)
+
+
+### Bug Fixes
+
+* Simplificar la obtención de la última etiqueta en el flujo de trabajo de Docker ([33b3d19](https://github.com/Negri234279/bot-rust-battlemetrics/commit/33b3d192bba3ca1bd714644bec0731ab407a1a56))
+
 ## [1.7.2](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.7.1...v1.7.2) (2025-02-23)
 
 
