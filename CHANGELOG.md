@@ -1,3 +1,11 @@
+## [1.7.11](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.7.10...v1.7.11) (2025-02-23)
+
+
+### Bug Fixes
+
+* Cambiar de 'npm install' a 'npm ci' y agregar caché para mejorar la instalación de dependencias ([f1b6c1a](https://github.com/Negri234279/bot-rust-battlemetrics/commit/f1b6c1af1e4121423550353e4d05f26c32256b77))
+* Eliminar la obtención de la etiqueta más reciente en el flujo de trabajo de Docker y usar el nombre de referencia de GitHub ([10c0af1](https://github.com/Negri234279/bot-rust-battlemetrics/commit/10c0af1bcd8b660b789a72a552f5b0bdfadea80e))
+
 ## [1.7.10](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.7.9...v1.7.10) (2025-02-23)
 
 
