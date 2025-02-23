@@ -55,10 +55,8 @@ jobs:
       - name: Get tag from GITHUB_REF
         id: get-latest-tag
         run: |
-          LATEST_TAG=${GITHUB_REF#refs/tags/}
-          LATEST_TAG_2=$(git describe --tags --abbrev=0)
-          echo "LAST TAG: ${LATEST_TAG}"
-          echo "LAST TAG 2: ${LATEST_TAG_2}"
+          LATEST_TAG=$(git describe --tags --abbrev=0)
+          echo "Latest tag version: ${LATEST_TAG}"
           echo "latest_tag=${LATEST_TAG}" >> $GITHUB_OUTPUT
 
       - name: Build and push Docker image
