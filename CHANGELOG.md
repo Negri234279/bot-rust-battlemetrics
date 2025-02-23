@@ -1,3 +1,10 @@
+## [1.7.9](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.7.8...v1.7.9) (2025-02-23)
+
+
+### Bug Fixes
+
+* Actualizar acciones de Docker a la versión más reciente ([1fa60be](https://github.com/Negri234279/bot-rust-battlemetrics/commit/1fa60bec88ddbcd1ce245bb901beea98bc9011c2))
+
 ## [1.7.8](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.7.7...v1.7.8) (2025-02-23)
 
 
