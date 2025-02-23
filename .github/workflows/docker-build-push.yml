@@ -48,6 +48,13 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
+      - name: Get latest tag
+        id: get-latest-tag
+        run: |
+          git tag --list
+          LATEST_TAG=$(git describe --tags --abbrev=0)
+          echo "latest_tag=${LATEST_TAG}" >> $GITHUB_OUTPUT
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
 
@@ -62,6 +69,4 @@ jobs:
           push: true
           tags: |
             negrii/rust-battlemetrics-bot-2:latest
-            negrii/rust-battlemetrics-bot-2:${{ github.ref_name }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+            negrii/rust-battlemetrics-bot-2:${{ steps.get-latest-tag.outputs.latest_tag }}
