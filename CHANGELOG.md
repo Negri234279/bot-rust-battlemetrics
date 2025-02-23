@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.6.0...v1.7.0) (2025-02-23)
+
+
+### Features
+
+* Modificar flujo de trabajo de Docker para obtener la etiqueta desde GITHUB_REF y ajustar configuración de semantic-release ([9e0cefe](https://github.com/Negri234279/bot-rust-battlemetrics/commit/9e0cefea32621eff9290deeb841fc548d8b5f408))
+
 # [1.6.0](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.5.0...v1.6.0) (2025-02-23)
 
 
