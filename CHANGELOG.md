@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.7.0...v1.7.1) (2025-02-23)
+
+
+### Bug Fixes
+
+* Limpiar el flujo de trabajo de Docker eliminando líneas innecesarias y corrigiendo la salida de la etiqueta más reciente ([be26239](https://github.com/Negri234279/bot-rust-battlemetrics/commit/be262396d55ebef446175efc3016f9931e603a76))
+
 # [1.7.0](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.6.0...v1.7.0) (2025-02-23)
 
 
