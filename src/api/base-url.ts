@@ -1,0 +1,1 @@
+export const BATTLEMETRICS_API_URL = 'https://api.battlemetrics.com'

@@ -1,9 +1,11 @@
-const { Client, GatewayIntentBits } = require('discord.js')
-const fs = require('node:fs/promises')
-const path = require('node:path')
+import { Client, GatewayIntentBits } from 'discord.js'
+import * as fs from 'node:fs/promises'
+import * as path from 'node:path'
 
-const { DISCORD_TOKEN } = require('./env')
-const logger = require('../providers/logger')
+import ControlledError from '../errors/controlled.error'
+import { Command, LoadCommands } from '../types/command'
+import { DISCORD_TOKEN } from './env'
+import logger from '../providers/logger'
 
 const bot = async () => {
     if (!DISCORD_TOKEN) {
@@ -26,8 +28,9 @@ const bot = async () => {
     })
 
     client.on('interactionCreate', async (interaction) => {
+        if (!interaction.isCommand()) return
+
         try {
-            if (!interaction.isCommand()) return
             const time = new Date()
 
             const command = commands.get(interaction.commandName)
@@ -37,7 +40,7 @@ const bot = async () => {
 
             await command.execute(interaction)
 
-            const timeResponse = new Date() - time
+            const timeResponse = new Date().getTime() - time.getTime()
             const { username } = interaction.user
 
             const msgCmd = `${interaction.commandName} - ${username} - Tiempo de respuesta: ${timeResponse}ms`
@@ -60,22 +63,20 @@ const bot = async () => {
     logger.info('Bot iniciado correctamente')
 }
 
-/**
- *
- * @returns {Promise< import('../types/command').LoadCommands>}
- */
-const _loadCommands = async () => {
+const _loadCommands = async (): Promise<LoadCommands> => {
     const commandsFolder = path.join(__dirname, '../commands')
     const commandFiles = await fs.readdir(commandsFolder)
 
-    const commandFilesFiltered = commandFiles.filter((file) => file.endsWith('.command.js'))
+    const commandFilesFiltered = commandFiles.filter(
+        (file) => file.endsWith('.command.js') || file.endsWith('.command.ts')
+    )
 
-    const commands = new Map()
+    const commands = new Map<string, Command>()
     const commandsData = []
 
     for (const file of commandFilesFiltered) {
         const filePath = path.join(commandsFolder, file)
-        const command = require(filePath)
+        const { default: command }: { default: Command } = require(filePath)
 
         if (!command.data || !command.execute) {
             logger.warn(`El archivo ${file} no exporta un comando válido.`)
@@ -92,4 +93,4 @@ const _loadCommands = async () => {
     }
 }
 
-module.exports = bot
+export default bot

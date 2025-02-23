@@ -1,12 +1,12 @@
-const { SlashCommandBuilder } = require('discord.js')
-const BattlemetricsRepositoryImpl = require('../repositories/battlemetrics.repository')
-const ControlledError = require('../errors/controlled.error')
+import { ChatInputCommandInteraction, SlashCommandBuilder } from 'discord.js'
+import ControlledError from '../errors/controlled.error'
+import { BattlemetricsRepositoryImpl } from '../repositories/battlemetrics.repository'
 
 const battlemetricsRepositoryImpl = new BattlemetricsRepositoryImpl()
 
 const commandName = 'remove-player'
 
-module.exports = {
+const command = {
     commandName,
     data: new SlashCommandBuilder()
         .setName(commandName)
@@ -18,14 +18,15 @@ module.exports = {
                 .setRequired(true)
                 .setAutocomplete(true)
         ),
-    /** * @param {import("discord.js").ChatInputCommandInteraction} interaction */
-    execute: async (interaction) => {
+    execute: async (interaction: ChatInputCommandInteraction) => {
         const playerId = interaction.options.getString('id')
         const discordGroupId = interaction.guild.id
 
         const playerFound = await battlemetricsRepositoryImpl.getUser(playerId, discordGroupId)
         if (!playerFound) {
-            throw new ControlledError(`El jugador ${playerId} no se encuentra en la lista de seguimiento.`)
+            throw new ControlledError(
+                `El jugador ${playerId} no se encuentra en la lista de seguimiento.`
+            )
         }
 
         await battlemetricsRepositoryImpl.removeUser(playerId, discordGroupId)
@@ -35,3 +36,5 @@ module.exports = {
         await interaction.reply(msg)
     },
 }
+
+export default command

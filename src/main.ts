@@ -1,5 +1,5 @@
-const logger = require('./providers/logger')
-const bot = require('./configs/bot.config')
+import bot from './configs/bot.config'
+import logger from './providers/logger'
 
 const run = async () => {
     try {

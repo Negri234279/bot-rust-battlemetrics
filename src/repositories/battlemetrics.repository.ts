@@ -1,14 +1,19 @@
-const { readFileSync } = require('node:fs')
-const { writeFile } = require('node:fs/promises')
-const path = require('node:path')
+import { existsSync, readFileSync, writeFileSync } from 'node:fs'
+import { writeFile } from 'node:fs/promises'
+import * as path from 'node:path'
 
 const dbPath = path.join(__dirname, 'database.json')
 
-class BattlemetricsRepositoryImpl {
-    /** @type {{[key: string]: {id: string, alias: string}[]}} */
-    database
+export class BattlemetricsRepositoryImpl {
+    static instance: BattlemetricsRepositoryImpl
+
+    private database: { [key: string]: { id: string; alias: string }[] }
 
     constructor() {
+        if (!existsSync(dbPath)) {
+            writeFileSync(dbPath, JSON.stringify({}), 'utf-8')
+        }
+
         this.database = JSON.parse(readFileSync(dbPath, 'utf-8'))
 
         if (BattlemetricsRepositoryImpl.instance) {
@@ -22,7 +27,7 @@ class BattlemetricsRepositoryImpl {
      * @param {string} discordId
      * @returns {Promise<{id: string, alias: string}[]>}
      */
-    async getUsers(discordId) {
+    async getUsers(discordId: string): Promise<{ id: string; alias: string }[]> {
         return this.database[discordId] || []
     }
 
@@ -31,7 +36,7 @@ class BattlemetricsRepositoryImpl {
      * @param {string} discordId
      * @returns {Promise<{id: string, alias: string} | null>}
      */
-    async getUser(userId, discordId) {
+    async getUser(userId: string, discordId: string): Promise<{ id: string; alias: string } | null> {
         const users = this.database[discordId] || []
         const user = users.find((user) => user.id === userId)
         if (!user) return null
@@ -44,7 +49,7 @@ class BattlemetricsRepositoryImpl {
      * @param {string} discordId
      * @returns {Promise<void>}
      */
-    async addUser(user, discordId) {
+    async addUser(user: { id: string; alias: string }, discordId: string): Promise<void> {
         const users = this.database[discordId] || []
         this.database[discordId] = [...users, user]
 
@@ -56,7 +61,7 @@ class BattlemetricsRepositoryImpl {
      * @param {string} discordId
      * @returns {Promise<void>}
      */
-    async updateUser(user, discordId) {
+    async updateUser(user: { id: string; alias: string }, discordId: string): Promise<void> {
         const users = this.database[discordId] || []
         const userIndex = users.findIndex((u) => u.id === user.id)
         if (userIndex === -1) return
@@ -72,12 +77,10 @@ class BattlemetricsRepositoryImpl {
      * @param {string} discordId
      * @returns {Promise<void>}
      */
-    async removeUser(userId, discordId) {
+    async removeUser(userId: string, discordId: string): Promise<void> {
         const users = this.database[discordId] || []
         this.database[discordId] = users.filter((user) => user.id !== userId)
 
         await writeFile(dbPath, JSON.stringify(this.database, null, 2))
     }
 }
-
-module.exports = BattlemetricsRepositoryImpl

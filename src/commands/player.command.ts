@@ -1,11 +1,11 @@
-const { SlashCommandBuilder, EmbedBuilder } = require('discord.js')
-const { getLastServerPlayed } = require('../services/player.service')
-const formatLastSeen = require('../helpers/formatLastSeen.helper')
-const formatSeconds = require('../helpers/formatSeconds.helper')
+import { ChatInputCommandInteraction, EmbedBuilder, SlashCommandBuilder } from 'discord.js'
+import formatLastSeen from '../helpers/formatLastSeen.helper'
+import formatSeconds from '../helpers/formatSeconds.helper'
+import { getLastServerPlayed } from '../services/player.service'
 
 const commandName = 'player'
 
-module.exports = {
+const command = {
     commandName,
     data: new SlashCommandBuilder()
         .setName(commandName)
@@ -17,8 +17,7 @@ module.exports = {
                 .setRequired(true)
                 .setAutocomplete(true)
         ),
-    /** * @param {import("discord.js").ChatInputCommandInteraction} interaction */
-    execute: async (interaction) => {
+    execute: async (interaction: ChatInputCommandInteraction) => {
         const playerId = interaction.options.getString('id')
 
         const { player, server } = await getLastServerPlayed(playerId)
@@ -38,3 +37,5 @@ module.exports = {
         await interaction.reply({ embeds: [embed] })
     },
 }
+
+export default command

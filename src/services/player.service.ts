@@ -1,9 +1,9 @@
-const getPlayerServer = require('../api/player-server')
-const getPlayerSessions = require('../api/player-sessions')
-const getServer = require('../api/server')
-const ControlledError = require('../errors/controlled.error')
+import { getPlayerServer } from '../api/player-server'
+import { getPlayerSessions } from '../api/player-sessions'
+import { getServer } from '../api/server'
+import ControlledError from '../errors/controlled.error'
 
-const getLastServerPlayed = async (playerId) => {
+export const getLastServerPlayed = async (playerId: string): Promise<GetLastServerPlayed> => {
     const playerSession = await getPlayerSessions(playerId)
     if (!playerSession) {
         throw new ControlledError('No se encontró información del jugador.')
@@ -42,4 +42,15 @@ const getLastServerPlayed = async (playerId) => {
     }
 }
 
-module.exports = { getLastServerPlayed }
+interface GetLastServerPlayed {
+    player: {
+        id: string
+        name: string
+        status: string
+    }
+    server: {
+        name: string
+        timePlayed: number
+        lastSeen: Date
+    }
+}
