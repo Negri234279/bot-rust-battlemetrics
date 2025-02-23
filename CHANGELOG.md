@@ -1,3 +1,10 @@
+## [1.7.10](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.7.9...v1.7.10) (2025-02-23)
+
+
+### Bug Fixes
+
+* Eliminar la obtención de etiquetas innecesaria en el flujo de trabajo de Docker ([34e6fad](https://github.com/Negri234279/bot-rust-battlemetrics/commit/34e6fadd7053a123cbb344d9ef001060109b4c92))
+
 ## [1.7.9](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.7.8...v1.7.9) (2025-02-23)
 
 
