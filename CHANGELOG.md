@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.5.0...v1.6.0) (2025-02-23)
+
+
+### Features
+
+* Actualizar flujo de trabajo de Docker para obtener la última etiqueta y agregar CHANGELOG.md a los activos de lanzamiento ([570b436](https://github.com/Negri234279/bot-rust-battlemetrics/commit/570b4367bf444e3519f393917983d4c8271f9d92))
+
 # [1.3.0](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.2.0...v1.3.0) (2025-02-23)
 
 
