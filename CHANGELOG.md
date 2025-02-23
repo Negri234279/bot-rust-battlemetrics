@@ -1,3 +1,10 @@
+## [1.7.16](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.7.15...v1.7.16) (2025-02-23)
+
+
+### Bug Fixes
+
+* Cambiar la rama de 'dev' a 'main' en el flujo de trabajo de Docker y configuración de lanzamiento ([c276559](https://github.com/Negri234279/bot-rust-battlemetrics/commit/c2765596deda6c0cee3f13d6e7378e13071da434))
+
 ## [1.7.15](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.7.14...v1.7.15) (2025-02-23)
 
 
