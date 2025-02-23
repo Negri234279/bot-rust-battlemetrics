@@ -1,3 +1,10 @@
+## [1.7.12](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.7.11...v1.7.12) (2025-02-23)
+
+
+### Bug Fixes
+
+* Agregar configuración de caché para mejorar la instalación de dependencias en el flujo de trabajo de Docker ([b3f99f5](https://github.com/Negri234279/bot-rust-battlemetrics/commit/b3f99f5f6083091964692879f23ae514a885ae5d))
+
 ## [1.7.11](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.7.10...v1.7.11) (2025-02-23)
 
 
