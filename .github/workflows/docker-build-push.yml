@@ -55,9 +55,7 @@ jobs:
       - name: Get tag from GITHUB_REF
         id: get-latest-tag
         run: |
-          git fetch --tags
           LATEST_TAG=$(git tag --sort=-v:refname | head -n 1)
-          echo "Latest tag version: ${LATEST_TAG}"
           echo "latest_tag=${LATEST_TAG}" >> $GITHUB_OUTPUT
 
       - name: Build and push Docker image
