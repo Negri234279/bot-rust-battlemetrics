@@ -1,3 +1,10 @@
+## [1.7.4](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.7.3...v1.7.4) (2025-02-23)
+
+
+### Bug Fixes
+
+* Manejar el caso en que no hay etiquetas disponibles en el flujo de trabajo de Docker ([04c5182](https://github.com/Negri234279/bot-rust-battlemetrics/commit/04c51824cd9d0a991e26d804f0bbecea8f8ecedd))
+
 ## [1.7.3](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.7.2...v1.7.3) (2025-02-23)
 
 
