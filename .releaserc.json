@@ -1,10 +1,11 @@
 {
-    "branches": ["main"],
+    "branches": ["dev"],
     "repositoryUrl": "https://github.com/Negri234279/bot-rust-battlemetrics.git",
     "plugins": [
         "@semantic-release/commit-analyzer",
         "@semantic-release/release-notes-generator",
         "@semantic-release/changelog",
-        "@semantic-release/git"
+        "@semantic-release/git",
+        "@semantic-release/github"
     ]
 }
