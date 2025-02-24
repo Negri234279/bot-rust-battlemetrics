@@ -16,7 +16,6 @@ WORKDIR /app
 
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/package*.json ./
-COPY --from=builder /app/src/repositories/database.json ./src/repositories/
 
 RUN npm install --omit=dev
 

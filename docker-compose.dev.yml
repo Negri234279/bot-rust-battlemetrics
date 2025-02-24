@@ -15,3 +15,37 @@ services:
       - DISCORD_TOKEN=${DISCORD_TOKEN}
     volumes:
       - ./logs:/app/logs
+    depends_on:
+      - mariadb
+
+  mariadb:
+    image: mariadb:latest
+    container_name: mariadb
+    env_file:
+      - .env
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MARIADB_DATABASE: ${DB_NAME}
+      MARIADB_USER: ${DB_USER}
+      MARIADB_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - '3306:3306'
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin
+    ports:
+      - "8080:80"
+    env_file:
+      - .env
+    environment:
+      PMA_HOST: mariadb
+      PMA_USER: ${DB_USER}
+      PMA_PASSWORD: ${DB_PASSWORD}
+    depends_on:
+      - mariadb
+
+volumes:
+  mariadb_data:
