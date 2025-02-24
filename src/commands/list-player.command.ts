@@ -1,20 +1,22 @@
 import { ChatInputCommandInteraction, EmbedBuilder, SlashCommandBuilder } from 'discord.js'
+import { container } from '../configs/container'
+import TYPES from '../configs/types'
 import ControlledError from '../errors/controlled.error'
-import { BattlemetricsRepositoryImpl } from '../repositories/battlemetrics.repository'
+import { BattlemetricsRepository } from '../repositories/battlemetrics.repository'
+import { Command } from '../types/command'
 
-const battlemetricsRepositoryImpl = new BattlemetricsRepositoryImpl()
+const battlemetricsRepositoryImpl = container.get<BattlemetricsRepository>(
+    TYPES.BattlemetricsRepository
+)
 
-const commandName = 'list-player'
-
-const commmand = {
-    commandName,
+const commmand: Command = {
     data: new SlashCommandBuilder()
-        .setName(commandName)
+        .setName('list-player')
         .setDescription('Mostrar lista de seguimiento'),
     execute: async (interaction: ChatInputCommandInteraction) => {
-        const discordGroupId = interaction.guild.id
+        const discord_group_id = interaction.guild.id
 
-        const players = await battlemetricsRepositoryImpl.getUsers(discordGroupId)
+        const players = await battlemetricsRepositoryImpl.find(discord_group_id)
         if (!players.length) {
             throw new ControlledError('No hay jugadores en la lista')
         }
@@ -24,7 +26,7 @@ const commmand = {
         for (const player of players) {
             embed.addFields({
                 name: player.alias,
-                value: `ID: ${player.id}`,
+                value: `ID: ${player.battlemetrics_id}`,
                 inline: true,
             })
         }

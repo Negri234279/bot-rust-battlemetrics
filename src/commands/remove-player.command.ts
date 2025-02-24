@@ -1,15 +1,17 @@
 import { ChatInputCommandInteraction, SlashCommandBuilder } from 'discord.js'
+import { container } from '../configs/container'
+import TYPES from '../configs/types'
 import ControlledError from '../errors/controlled.error'
-import { BattlemetricsRepositoryImpl } from '../repositories/battlemetrics.repository'
+import { BattlemetricsRepository } from '../repositories/battlemetrics.repository'
+import { Command } from '../types/command'
 
-const battlemetricsRepositoryImpl = new BattlemetricsRepositoryImpl()
+const battlemetricsRepositoryImpl = container.get<BattlemetricsRepository>(
+    TYPES.BattlemetricsRepository
+)
 
-const commandName = 'remove-player'
-
-const command = {
-    commandName,
+const command: Command = {
     data: new SlashCommandBuilder()
-        .setName(commandName)
+        .setName('remove-player')
         .setDescription('Elimina un jugador de Rust a la lista de seguimiento')
         .addStringOption((option) =>
             option
@@ -19,19 +21,22 @@ const command = {
                 .setAutocomplete(true)
         ),
     execute: async (interaction: ChatInputCommandInteraction) => {
-        const playerId = interaction.options.getString('id')
-        const discordGroupId = interaction.guild.id
+        const battlemetrics_id = interaction.options.getString('id')
+        const discord_group_id = interaction.guild.id
 
-        const playerFound = await battlemetricsRepositoryImpl.getUser(playerId, discordGroupId)
+        const playerFound = await battlemetricsRepositoryImpl.findOne({
+            battlemetrics_id,
+            discord_group_id,
+        })
+
         if (!playerFound) {
-            throw new ControlledError(
-                `El jugador ${playerId} no se encuentra en la lista de seguimiento.`
-            )
+            const msg = `El jugador ${battlemetrics_id} no se encuentra en la lista de seguimiento.`
+            throw new ControlledError(msg)
         }
 
-        await battlemetricsRepositoryImpl.removeUser(playerId, discordGroupId)
+        await battlemetricsRepositoryImpl.remove({ battlemetrics_id, discord_group_id })
 
-        const msg = `El jugador ${playerFound.id} (${playerFound.alias}) fue eliminado de la lista de seguimiento.`
+        const msg = `El jugador ${playerFound.battlemetrics_id} (${playerFound.alias}) fue eliminado de la lista de seguimiento.`
 
         await interaction.reply(msg)
     },
