@@ -1,3 +1,12 @@
+# [1.8.0](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.7.16...v1.8.0) (2025-02-24)
+
+
+### Features
+
+* Agregar configuración de MariaDB y phpMyAdmin en docker-compose para entornos de desarrollo y producción ([6f1880a](https://github.com/Negri234279/bot-rust-battlemetrics/commit/6f1880aae29188b64611a19dcde32a06095e1a74))
+* Agregar nuevas dependencias 'inversify', 'mariadb' y 'reflect-metadata' en package.json y package-lock.json ([b4afd03](https://github.com/Negri234279/bot-rust-battlemetrics/commit/b4afd0360558b4b424162a080294509098586a80))
+* Refactor estructura de comandos y agregar soporte para inyección de dependencias en el repositorio de Battlemetrics ([1fbce9a](https://github.com/Negri234279/bot-rust-battlemetrics/commit/1fbce9a8c70fca99cb534ba0f23139cfb11761fd))
+
 ## [1.7.16](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.7.15...v1.7.16) (2025-02-23)
 
 
