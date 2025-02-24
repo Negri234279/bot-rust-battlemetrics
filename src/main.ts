@@ -1,4 +1,5 @@
 import bot from './configs/bot.config'
+import Database from './configs/Database'
 import logger from './providers/logger'
 
 const run = async () => {
@@ -6,6 +7,8 @@ const run = async () => {
         logger.info('Iniciando bot...')
 
         await bot()
+
+        new Database()
 
         process.on('uncaughtException', (error) => {
             logger.error('Error no controlado (unhandledRejection):', error)

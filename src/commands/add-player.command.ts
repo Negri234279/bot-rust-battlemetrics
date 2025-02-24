@@ -1,15 +1,18 @@
 import { ChatInputCommandInteraction, SlashCommandBuilder } from 'discord.js'
 import { getPlayer } from '../api/player'
-import { BattlemetricsRepositoryImpl } from '../repositories/battlemetrics.repository'
+import { container } from '../configs/container'
+import TYPES from '../configs/types'
+import { BattlemetricsRepository } from '../repositories/battlemetrics.repository'
+import { Command } from '../types/command'
+import { User } from '../types/user'
 
-const battlemetricsRepositoryImpl = new BattlemetricsRepositoryImpl()
+const battlemetricsRepositoryImpl = container.get<BattlemetricsRepository>(
+    TYPES.BattlemetricsRepository
+)
 
-const commandName = 'add-player'
-
-const commmand = {
-    commandName,
+const commmand: Command = {
     data: new SlashCommandBuilder()
-        .setName(commandName)
+        .setName('add-player')
         .setDescription('Añade un jugador de Rust a la lista de seguimiento')
         .addStringOption((option) =>
             option
@@ -25,21 +28,30 @@ const commmand = {
                 .setRequired(false)
         ),
     execute: async (interaction: ChatInputCommandInteraction) => {
-        const playerId = interaction.options.getString('id')
+        const battlemetrics_id = interaction.options.getString('id')
         const playerAlias = interaction.options.getString('alias')
-        const discordGroupId = interaction.guild.id
+        const discord_group_id = interaction.guild.id
 
-        const alias = playerAlias || (await getPlayer(playerId)).data.attributes.name
+        const alias = playerAlias || (await getPlayer(battlemetrics_id)).data.attributes.name
 
-        const playerFound = await battlemetricsRepositoryImpl.getUser(playerId, discordGroupId)
+        const playerFound = await battlemetricsRepositoryImpl.findOne({
+            battlemetrics_id,
+            discord_group_id,
+        })
+
+        const user: User = {
+            battlemetrics_id,
+            alias,
+            discord_group_id,
+        }
 
         playerFound
-            ? await battlemetricsRepositoryImpl.updateUser({ id: playerId, alias }, discordGroupId)
-            : await battlemetricsRepositoryImpl.addUser({ id: playerId, alias }, discordGroupId)
+            ? await battlemetricsRepositoryImpl.update(user)
+            : await battlemetricsRepositoryImpl.create(user)
 
         const msg = playerFound
-            ? `El jugador ${playerId} (${alias}) ya estaba en la lista de seguimiento, se ha actualizado su alias.`
-            : `El jugador ${playerId} (${alias}) fue añadido a la lista de seguimiento.`
+            ? `El jugador ${battlemetrics_id} (${alias}) ya estaba en la lista de seguimiento, se ha actualizado su alias.`
+            : `El jugador ${battlemetrics_id} (${alias}) fue añadido a la lista de seguimiento.`
 
         await interaction.reply(msg)
     },

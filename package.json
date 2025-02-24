@@ -17,6 +17,9 @@
     "axios": "1.7.9",
     "discord.js": "14.18.0",
     "dotenv": "16.4.7",
+    "inversify": "6.2.2",
+    "mariadb": "3.4.0",
+    "reflect-metadata": "0.2.2",
     "winston": "3.17.0"
   },
   "devDependencies": {

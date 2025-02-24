@@ -11,6 +11,23 @@ services:
       - DISCORD_TOKEN=${DISCORD_TOKEN}
     volumes:
       - ./logs:/app/logs
+    depends_on:
+      - mariadb
+
+  mariadb:
+    image: mariadb:latest
+    container_name: mariadb
+    env_file:
+      - .env
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MARIADB_DATABASE: ${DB_NAME}
+      MARIADB_USER: ${DB_USER}
+      MARIADB_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - '3306:3306'
+    volumes:
+      - mariadb_data:/var/lib/mysql
 
   watchtower:
     image: containrrr/watchtower
@@ -19,3 +36,6 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     restart: unless-stopped
     command: --interval 300
+
+volumes:
+  mariadb_data:

@@ -76,7 +76,7 @@ const _loadCommands = async (): Promise<LoadCommands> => {
 
     for (const file of commandFilesFiltered) {
         const filePath = path.join(commandsFolder, file)
-        const { default: command }: { default: Command } = require(filePath)
+        const { default: command }: { default: Command } = await import(filePath)
 
         if (!command.data || !command.execute) {
             logger.warn(`El archivo ${file} no exporta un comando válido.`)
