@@ -1,4 +1,5 @@
 import { ChatInputCommandInteraction, EmbedBuilder, SlashCommandBuilder } from 'discord.js'
+
 import { container } from '../configs/container'
 import TYPES from '../configs/types'
 import ControlledError from '../errors/controlled.error'
@@ -24,9 +25,20 @@ const commmand: Command = {
         const embed = new EmbedBuilder().setTitle('Lista de seguimiento').setColor('#0099ff')
 
         for (const player of players) {
+            let text = `BattlemetricsId: ${player.battlemetrics_id}`
+
+            if (player.steam_id) {
+                const profileurl = `https://steamcommunity.com/profiles/${player.steam_id}`
+                text += `\nSteamId: [${player.steam_id}](${profileurl})`
+            }
+
+            if (player.discord_id) {
+                text += `\nDiscordId: ${player.discord_id}`
+            }
+
             embed.addFields({
                 name: player.alias,
-                value: `ID: ${player.battlemetrics_id}`,
+                value: text,
                 inline: true,
             })
         }
