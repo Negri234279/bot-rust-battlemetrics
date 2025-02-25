@@ -1,3 +1,14 @@
+# [1.9.0](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.8.0...v1.9.0) (2025-02-25)
+
+
+### Features
+
+* Agregar opciones para Steam ID y Discord ID en el comando de agregar jugador ([42350a0](https://github.com/Negri234279/bot-rust-battlemetrics/commit/42350a08a35ce8b9f7d50b21cb878d985dd880e8))
+* Agregar soporte para obtener información de jugadores de Steam y comando correspondiente ([57dc892](https://github.com/Negri234279/bot-rust-battlemetrics/commit/57dc8922a1d7f8399c28e593d0d2b6bb34230ffa))
+* Agregar soporte para obtener información de usuarios de Steam y actualizar la configuración de la API ([62e9702](https://github.com/Negri234279/bot-rust-battlemetrics/commit/62e97027d7d5c446257675c7c9e23888151c481b))
+* Mejorar la lista de jugadores mostrando Steam ID y Discord ID en el comando de seguimiento ([a918d5f](https://github.com/Negri234279/bot-rust-battlemetrics/commit/a918d5fb3d13c6c62a0fe473ce8c426bb1ac0060))
+* Mejorar la presentación de información del jugador con soporte para Steam ID y Discord ID ([bff7555](https://github.com/Negri234279/bot-rust-battlemetrics/commit/bff75559e9d488a0a2cec0f7a269a2858e7d1d6b))
+
 # [1.8.0](https://github.com/Negri234279/bot-rust-battlemetrics/compare/v1.7.16...v1.8.0) (2025-02-24)
 
 
