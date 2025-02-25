@@ -26,10 +26,18 @@ const commmand: Command = {
                 .setName('alias')
                 .setDescription('Alias o nombre personalizado para el jugador')
                 .setRequired(false)
+        )
+        .addStringOption((option) =>
+            option.setName('steam_id').setDescription('Steam ID del jugador').setRequired(false)
+        )
+        .addStringOption((option) =>
+            option.setName('discord_id').setDescription('Discord username').setRequired(false)
         ),
     execute: async (interaction: ChatInputCommandInteraction) => {
         const battlemetrics_id = interaction.options.getString('id')
         const playerAlias = interaction.options.getString('alias')
+        const steam_id = interaction.options.getString('steam_id')
+        const discord_id = interaction.options.getString('discord_id')
         const discord_group_id = interaction.guild.id
 
         const alias = playerAlias || (await getPlayer(battlemetrics_id)).data.attributes.name
@@ -43,6 +51,14 @@ const commmand: Command = {
             battlemetrics_id,
             alias,
             discord_group_id,
+        }
+
+        if (steam_id) {
+            user.steam_id = steam_id
+        }
+
+        if (discord_id) {
+            user.discord_id = discord_id
         }
 
         playerFound
