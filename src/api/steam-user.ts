@@ -9,8 +9,8 @@ export const getSteamUser = async (steamId: string): Promise<SteamPlayerResponse
         const url = `${STEAM_API_URL}/ISteamUser/GetPlayerSummaries/v0002`
         const res = await axios.get<SteamPlayerResponse>(url, {
             params: {
-                key: 'FB2F13D60913D22F763AF06058657C9B',
-                steamids: STEAM_API_KEY,
+                key: STEAM_API_KEY,
+                steamids: steamId,
             },
         })
 
