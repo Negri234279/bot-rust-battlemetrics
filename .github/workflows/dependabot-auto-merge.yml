@@ -11,6 +11,9 @@ jobs:
     if: github.actor == 'dependabot[bot]'
     
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
       - name: Enable auto-merge for Dependabot PRs
         run: |
           gh pr merge --auto --merge "$GITHUB_REF_NAME"
