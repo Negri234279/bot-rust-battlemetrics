@@ -8,7 +8,7 @@ jobs:
   dependabot-auto-merge:
     runs-on: ubuntu-latest
 
-    if: github.actor == 'dependabot[bot]'
+    if: ${{ github.actor == 'dependabot[bot]' && github.event_name == 'pull_request'}}
     
     steps:
       - name: Checkout repository
@@ -16,6 +16,7 @@ jobs:
         
       - name: Enable auto-merge for Dependabot PRs
         run: |
-          gh pr merge --auto --merge "$GITHUB_REF_NAME"
+          gh pr merge --auto --merge "$PR_URL"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
