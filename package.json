@@ -15,7 +15,7 @@
   "description": "",
   "dependencies": {
     "axios": "1.8.0",
-    "discord.js": "14.18.0",
+    "discord.js": "14.19.1",
     "dotenv": "16.4.7",
     "inversify": "6.2.2",
     "mariadb": "3.4.0",
